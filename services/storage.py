@@ -24,6 +24,7 @@ def save_books(books):
     with open(BOOKS_FILE, "w") as f:
         json.dump(data, f, indent=2)
 
+
 def load_users():
     if not os.path.exists(USERS_FILE):
         return {}  # file doesn't exist on first run
@@ -44,4 +45,3 @@ def save_users(users):
     data = [u.to_dict() for u in users.values()]  # can't write objects to json directly
     with open(USERS_FILE, "w") as f:
         json.dump(data, f, indent=2)
-
