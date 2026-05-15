@@ -7,3 +7,20 @@ from models.transaction import Transaction
 BOOKS_FILE = "data/books.json"
 USERS_FILE = "data/users.json"
 TRANSACTIONS_FILE = "data/transactions.json"
+
+def load_books():
+    if not os.path.exists(BOOKS_FILE):
+        return {}  # no file yet, nothing to load
+    with open(BOOKS_FILE, "r") as f:
+        data = json.load(f)
+    books = {}
+    for item in data:
+        b = Book(item["id"], item["title"], item["author"], item["available"])
+        books[b.id] = b  # dict so we can find books by id fast
+    return books
+
+def save_books(books):
+    data = [b.to_dict() for b in books.values()]  # objects -> dicts for json
+    with open(BOOKS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
