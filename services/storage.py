@@ -24,3 +24,24 @@ def save_books(books):
     with open(BOOKS_FILE, "w") as f:
         json.dump(data, f, indent=2)
 
+def load_users():
+    if not os.path.exists(USERS_FILE):
+        return {}  # file doesn't exist on first run
+    with open(USERS_FILE, "r") as f:
+        data = json.load(f)
+    users = {}
+    for item in data:
+        if item["user_id"] == 99:
+            u = Admin(item["user_id"], item["name"])  # we decided 99 = admin
+        else:
+            u = Member(item["user_id"], item["name"])
+        for book_id in item["borrowed_books"]:
+            u.add_borrowed(book_id)  # put their books back
+        users[u.user_id] = u
+    return users
+
+def save_users(users):
+    data = [u.to_dict() for u in users.values()]  # can't write objects to json directly
+    with open(USERS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
