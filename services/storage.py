@@ -45,3 +45,20 @@ def save_users(users):
     data = [u.to_dict() for u in users.values()]  # can't write objects to json directly
     with open(USERS_FILE, "w") as f:
         json.dump(data, f, indent=2)
+
+def load_transactions():
+    if not os.path.exists(TRANSACTIONS_FILE):
+        return []  # no file yet, nothing to load
+    with open(TRANSACTIONS_FILE, "r") as f:
+        data = json.load(f)
+    transactions = []
+    for item in data:
+        t = Transaction(item["user_id"], item["book_id"], item["action"])
+        t.date = item["date"]  # keep original date, not today
+        transactions.append(t)
+    return transactions
+
+def save_transactions(transactions):
+    data = [t.to_dict() for t in transactions]  # objects -> dicts for json
+    with open(TRANSACTIONS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
