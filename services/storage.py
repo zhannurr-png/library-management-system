@@ -62,3 +62,8 @@ def save_transactions(transactions):
     data = [t.to_dict() for t in transactions]  # objects -> dicts for json
     with open(TRANSACTIONS_FILE, "w") as f:
         json.dump(data, f, indent=2)
+
+def stream_books(books):
+    # yields one book at a time,no need to load all into memory
+    for book in books.values():
+        yield book
