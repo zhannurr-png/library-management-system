@@ -8,6 +8,7 @@ from services.storage import(
 from models.transaction import Transaction
 
 class LibraryService:
+    #load everything from files
     def __init__(self):
         self.books = load_books()
         self.users = load_users()
@@ -48,6 +49,7 @@ def return_book(self, user_id, book_id):
     user = self.users[user_id]
     book = self.books[book_id]
 
+    #make sure user actually borrowed this book
     if book_id not in user.borrowed_books:
         raise ValueError("This user didn't borrow this book.")
     book.return_book()
@@ -59,3 +61,10 @@ def return_book(self, user_id, book_id):
     save_users(self.users)
     save_transactions(self.transactions)
     print(f" {user.name} successfully returned '{book.title}'.Thank you!")
+
+def get_available_books(self):
+    return list(filter(lambda book: book.available, self.books.values()))
+def get_borrowed_books(self):
+    return list(filter(lambda book: not book.available, self.books.values()))
+def get_user_history(self, user_id):
+    return [t for t in self.transactions if t.user_id == user_id]
