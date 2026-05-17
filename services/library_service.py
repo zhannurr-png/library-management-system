@@ -68,3 +68,26 @@ def get_borrowed_books(self):
     return list(filter(lambda book: not book.available, self.books.values()))
 def get_user_history(self, user_id):
     return [t for t in self.transactions if t.user_id == user_id]
+def suggest_book(self, user_id):
+    #extra feature: recommend books based on similiar users
+    if user_id not in self.users:
+        raise ValueError("Invalid user_id.")
+
+    user = self.users[user_id]
+    user_books = set(user.borrowed_books)
+    #find users who borrowed at least one same book
+    #set intersection is faster than nested loops
+    similar_users = [
+        user for uid, in self.users.items()
+        if uid != user_id and set (user.borrowed_books) & user_books
+    ]
+
+    #collect all books similar users borrowed
+    suggestions = set()
+    for similar in similar_users:
+        suggestions |= set(similar.borrowed_books)
+
+    #remove books this user already has
+    suggestions -= user_books
+    result = [self.books[book_id] for book_id in suggestions if book_id in self.books and self.books[book_id].available]
+    return result
