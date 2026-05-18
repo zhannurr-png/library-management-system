@@ -1,4 +1,4 @@
-from services.library_service import LibraryService
+from services.library_service import LibraryService, return_book
 from services.report import (report_available, report_borrowed,
     report_user_history)
 from utils.display import print_header, print_book_list, print_user_info
@@ -21,3 +21,9 @@ def main():
         print("9. Exit")
 
         choice = safe_int("\nEnter choice: ")
+
+        if choice == 1:
+            report_available(service.books)
+
+        elif choice == 2:
+            report_borrowed(service.books)
