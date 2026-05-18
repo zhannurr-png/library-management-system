@@ -7,9 +7,8 @@ class Book:
 
     def borrow(self):
         if not self.available:
-            return False
+            raise ValueError(f"Sorry, '{self.title}' is already borrowed.")
         self.available = False
-        return True
 
     def return_book(self):
         self.available = True
