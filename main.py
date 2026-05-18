@@ -27,3 +27,13 @@ def main():
 
         elif choice == 2:
             report_borrowed(service.books)
+
+        elif choice == 3:
+            print_header("Borrow a book")
+            report_available(service.books)
+            user_id = safe_int(input("Enter user ID: "))
+            book_id = safe_int(input("Enter book ID to borrow: "))
+            try:
+                service.borrow_book(user_id, book_id)
+            except ValueError as e:
+                print(f"Error: {e}")
