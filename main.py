@@ -66,3 +66,12 @@ def main():
             except ValueError as e:
                 print(f"Error: {e}")
 
+        elif choice == 7:
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice, try again")
+
+if __name__ == "__main__":
+    main()
