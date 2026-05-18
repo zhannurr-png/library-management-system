@@ -46,3 +46,11 @@ def main():
                 service.return_book(user_id, book_id)
             except ValueError as e:
                 print(f"Error: {e}")
+
+        elif choice == 5:
+            print_header("Borrow history")
+            user_id = safe_int(input("Enter user ID: "))
+            if user_id in service.books:
+                report_user_history(service.users[user_id], service.transactions)
+            else:
+                print("User not found")
