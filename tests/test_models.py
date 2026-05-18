@@ -32,3 +32,30 @@ class TestBook(unittest.TestCase):
         self.assertEqual(d["id"], 1)
         self.assertEqual(d["title"], "Clean Code")
         self.assertTrue(d["available"])
+
+
+class TestUser(unittest.TestCase):
+
+    def test_member_limit(self):
+        m = Member(1, "Alice")
+        m.add_borrowed(1)
+        m.add_borrowed(2)
+        m.add_borrowed(3)
+        self.assertFalse(m.can_borrow())  #since reached limit
+
+    def test_member_can_borrow(self):
+        m = Member(1, "Alice")
+        m.add_borrowed(1)
+        self.assertTrue(m.can_borrow())  #only 1 book is borowed,max limit is 3
+
+    def test_admin_no_limit(self):
+        a = Admin(2, "Bob")
+        for i in range(20):
+            a.add_borrowed(i)
+        self.assertTrue(a.can_borrow())  #always true for admin
+
+    def test_remove_borrowed(self):
+        m = Member(1, "Alice")
+        m.add_borrowed(1)
+        m.remove_borrowed(1)
+        self.assertNotIn(1, m.borrowed_books)
