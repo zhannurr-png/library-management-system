@@ -59,3 +59,26 @@ class TestUser(unittest.TestCase):
         m.add_borrowed(1)
         m.remove_borrowed(1)
         self.assertNotIn(1, m.borrowed_books)
+class TestTransaction(unittest.TestCase):
+
+    def test_wrong_action(self):
+        with self.assertRaises(ValueError):
+            Transaction(1, 1, "delete")
+
+    def test_as_tuple_has_4_items(self):
+        t = Transaction(1, 2, "borrow")
+        self.assertEqual(len(t.as_tuple()), 4)
+
+    def test_days_since_is_zero_today(self):
+        t = Transaction(1, 2, "borrow")
+        self.assertEqual(t.days_since(), 0) 
+
+    def test_to_dict(self):
+        t = Transaction(1, 2, "borrow")
+        d = t.to_dict()
+        self.assertEqual(d["user_id"], 1)
+        self.assertEqual(d["book_id"], 2)
+        self.assertEqual(d["action"], "borrow")
+
+if __name__ == "__main__":
+    unittest.main()
