@@ -54,3 +54,16 @@ def main():
                 report_user_history(service.users[user_id], service.transactions)
             else:
                 print("User not found")
+
+        elif choice == 6:
+            print_header("Book suggestions")
+            user_id = safe_int("Enter user ID: ")
+            try: #generate suggestions based on borrowing history
+                suggestions = service.suggest_books(user_id)
+                if suggestions:
+                    print("You might like")
+                    print_book_list(suggestions)
+                else: #no enough data for suggestions
+                    print("No suggestions found, borrow more books")
+            except ValueError as e:
+                print(f"Error: {e}")
