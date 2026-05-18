@@ -5,7 +5,7 @@ class User:
         self.borrowed_books = []  
 
     def can_borrow(self):
-        return False      #subclasses (Member or Admin) implement can_borrow()
+        raise NotImplementedError("Subclass (Member or Admin) must implement can_borrow()")
 
     def add_borrowed(self, book_id):
         self.borrowed_books.append(book_id)
