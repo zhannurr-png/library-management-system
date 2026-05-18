@@ -37,3 +37,12 @@ def main():
                 service.borrow_book(user_id, book_id)
             except ValueError as e:
                 print(f"Error: {e}")
+
+        elif choice == 4:
+            print_header("Return a book")
+            user_id = safe_int(input("Enter user ID: "))
+            book_id = safe_int(input("Enter book ID to return: "))
+            try:
+                service.return_book(user_id, book_id)
+            except ValueError as e:
+                print(f"Error: {e}")
