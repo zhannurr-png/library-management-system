@@ -15,10 +15,8 @@ def main():
         print("3. Borrow a book")
         print("4. Return a book")
         print("5. Show my history")
-        print("6. Show overdue books")
-        print("7. Get book suggestions")
-        print("8. Backup data")
-        print("9. Exit")
+        print("6. Get book suggestions")
+        print("7. Exit")
 
         choice = safe_int("\nEnter choice: ")
 
@@ -67,3 +65,4 @@ def main():
                     print("No suggestions found, borrow more books")
             except ValueError as e:
                 print(f"Error: {e}")
+
