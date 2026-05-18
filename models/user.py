@@ -20,6 +20,7 @@ class User:
     def __str__(self):
         return f"User: {self.name} (ID: {self.user_id}), borrowed: {self.borrowed_books}"
 
+
 class Member(User):
     max_borrow = 3      #maximum number of book that can be borrowed
 
@@ -28,6 +29,7 @@ class Member(User):
 
     def __str__(self):
         return f"Member: {self.name} (ID: {self.user_id}), borrowed: {self.borrowed_books}"
+
 
 class Admin(User):
     def can_borrow(self):
