@@ -31,7 +31,7 @@ def borrow_book(self, user_id, book_id):
         raise ValueError("You already borrowed this book")
 
     book.borrow()
-    user.add_borrowed_book(book_id)
+    user.add_borrowed(book_id)
 
     t = Transaction(user_id, book_id, "borrow")
     self.transactions.append(t)
