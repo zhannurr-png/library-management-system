@@ -24,7 +24,7 @@ class Transaction:
     def date(self):
         return self._date
 
-        @date.settler
+    @date.settler
     def date(self, value):
         self._date = value
 
