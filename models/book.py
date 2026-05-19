@@ -8,6 +8,10 @@ class Book:
     @property
     def book_id(self):
         return self._book_id
+        
+    @property
+    def id(self):
+        return self._book_id
     
     @property
     def title(self):
