@@ -34,7 +34,7 @@ class TestLibraryService(unittest.TestCase):
 
     def test_suggest_books_invalid_user_raises(self):
         with self.assertRaises(ValueError):
-            self.service.suggest_books(999)
+            self.service.suggest_book(999)
 
 if __name__ == "__main__":
     unittest.main()

@@ -77,7 +77,7 @@ class LibraryService:
         #find users who borrowed at least one same book
         #set intersection is faster than nested loops
         similar_users = [
-            user for uid, in self.users.items()
+            user for uid, other_user in self.users.items()
         if uid != user_id and set (user.borrowed_books) & user_books]
 
         #collect all books similar users borrowed
