@@ -16,7 +16,7 @@ def load_books():
     books = {}
     for item in data:
         b = Book(item["id"], item["title"], item["author"], item["available"])
-        books[book.id] = b  # dict so we can find books by id fast
+        books[b.book.id] = b  # dict so we can find books by id fast
     return books
 
 def save_books(books):
