@@ -29,7 +29,7 @@ class TestLibraryService(unittest.TestCase):
             self.service.return_book(1, 1)
 
     def test_suggest_books_returns_list(self):
-        result = self.service.suggest_books(1)
+        result = self.service.suggest_book(1)
         self.assertIsInstance(result, list)
 
     def test_suggest_books_invalid_user_raises(self):
