@@ -29,8 +29,8 @@ def main():
         elif choice == 3:
             print_header("Borrow a book")
             report_available(service.books)
-            user_id = safe_int(input("Enter user ID: "))
-            book_id = safe_int(input("Enter book ID to borrow: "))
+            user_id = safe_int("Enter user ID: ")
+            book_id = safe_int("Enter book ID to borrow: ")
             try:
                 service.borrow_book(user_id, book_id)
             except ValueError as e:
@@ -38,8 +38,8 @@ def main():
 
         elif choice == 4:
             print_header("Return a book")
-            user_id = safe_int(input("Enter user ID: "))
-            book_id = safe_int(input("Enter book ID to return: "))
+            user_id = safe_int("Enter user ID: ")
+            book_id = safe_int("Enter book ID to return: ")
             try:
                 service.return_book(user_id, book_id)
             except ValueError as e:
@@ -47,7 +47,7 @@ def main():
 
         elif choice == 5:
             print_header("Borrow history")
-            user_id = safe_int(input("Enter user ID: "))
+            user_id = safe_int("Enter user ID: ")
             if user_id in service.books:
                 report_user_history(service.users[user_id], service.transactions)
             else:
@@ -57,7 +57,7 @@ def main():
             print_header("Book suggestions")
             user_id = safe_int("Enter user ID: ")
             try: #generate suggestions based on borrowing history
-                suggestions = service.suggest_books(user_id)
+                suggestions = service.suggest_book(user_id)
                 if suggestions:
                     print("You might like")
                     print_book_list(suggestions)
