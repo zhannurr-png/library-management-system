@@ -1,7 +1,32 @@
 [
-  {"id": 1, "title": "Clean Code", "author": "Robert Martin", "available": true},
-  {"id": 2, "title": "Python Crash Course", "author": "Eric Matthes", "available": false},
-  {"id": 3, "title": "The Pragmatic Programmer", "author": "David Thomas", "available": true},
-  {"id": 4, "title": "Automate the Boring Stuff", "author": "Al Sweigart", "available": true},
-  {"id": 5, "title": "Fluent Python", "author": "Luciano Ramalho", "available": false}
+  {
+    "id": 1,
+    "title": "Clean Code",
+    "author": "Robert Martin",
+    "available": true
+  },
+  {
+    "id": 2,
+    "title": "Python Crash Course",
+    "author": "Eric Matthes",
+    "available": true
+  },
+  {
+    "id": 3,
+    "title": "The Pragmatic Programmer",
+    "author": "David Thomas",
+    "available": true
+  },
+  {
+    "id": 4,
+    "title": "Automate the Boring Stuff",
+    "author": "Al Sweigart",
+    "available": true
+  },
+  {
+    "id": 5,
+    "title": "Fluent Python",
+    "author": "Luciano Ramalho",
+    "available": false
+  }
 ]
