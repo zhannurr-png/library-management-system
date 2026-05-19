@@ -24,6 +24,10 @@ class Transaction:
     def date(self):
         return self._date
 
+    @date.setter
+    def date(self, value):
+        self._date = value
+
     def as_tuple(self):     #use tuple to avoid changes in transaction log
         return (self._user_id, self._book_id, self._action, self._date)
 
