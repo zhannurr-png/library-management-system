@@ -39,12 +39,7 @@ class Book:
         return (self._book_id, self._title, self._author, self._available)
 
     def to_dict(self):
-        return {
-            "id": self._book_id, 
-            "title": self._title,
-            "author": self._author, 
-            "available": self._available
-        }
+        return {"id": self._book_id, "title": self._title, "author": self._author, "available": self._available}
 
     def __str__(self):
         status = "available" if self._available else "not available"
